@@ -1,5 +1,6 @@
 from datetime import timedelta
 from pathlib import Path
+import os
 
 from django.conf.global_settings import AUTH_USER_MODEL
 
@@ -13,9 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-641)(_-e3vqx6=@cs)!m58nmg^xjnjnptr!avuie%%uute+^&t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sardorbek.pythonanywhere.com']
 
 # Application definition
 
@@ -29,12 +30,12 @@ INSTALLED_APPS = [
     # apps
     'main',
     'users',
+    'corsheaders',
     # packages
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
     'django_filters',
-    'corshearders',
 ]
 
 SWAGGER_SETTINGS = {
@@ -142,6 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
